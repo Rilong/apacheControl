@@ -1,0 +1,35 @@
+<VirtualHost *:80>
+    ServerName comm-app.local
+    DocumentRoot "C:/xampp/htdocs/CommunicationApp/public"
+    SetEnv APPLICATION_ENV "development"
+    <Directory "C:/xampp/htdocs/CommunicationApp/public">
+        DirectoryIndex index.php
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName comm-app.local
+    DocumentRoot "C:/xampp/htdocs/CommunicationApp/public"
+    SetEnv APPLICATION_ENV "development"
+    <Directory "C:/xampp/htdocs/CommunicationApp/public">
+        DirectoryIndex index.php
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName comm-app.local
+    DocumentRoot "C:/xampp/htdocs/CommunicationApp/public"
+    SetEnv APPLICATION_ENV "development"
+    <Directory "C:/xampp/htdocs/CommunicationApp/public">
+        DirectoryIndex index.php
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
