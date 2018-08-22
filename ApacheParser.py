@@ -9,7 +9,7 @@ def parse_blocks(conf_str):
 
     return hosts
 
-
+# add comment
 def create_host(server_name, root, host='*'):
     mackup = '''<VirtualHost ''' + host + ''':80>
     ServerName ''' + server_name + '''
