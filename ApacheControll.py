@@ -1,7 +1,6 @@
-from ApacheParser import parse_blocks
-
+from ApacheParser import *
 file = open('apache.txt', 'r')
 data = file.read()
 file.close()
 
-print(parse_blocks(data))
+print(create_host('test.local', '/home/rilong/www/test.local/public_html'))
