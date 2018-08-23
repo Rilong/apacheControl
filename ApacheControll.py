@@ -13,7 +13,7 @@ print('remove - Add site')
 print('list - List sites')
 print('exit - Exit from program')
 print('================')
-# comment
+
 cmd = ''
 sites_list = parse_blocks(read_apache_file('apache.txt'))
 while cmd != 'exit':
