@@ -1,5 +1,5 @@
 <VirtualHost *:80>
-    ServerName comm-app.local
+    ServerName comm-app1.local
     DocumentRoot "C:/xampp/htdocs/CommunicationApp/public"
     SetEnv APPLICATION_ENV "development"
     <Directory "C:/xampp/htdocs/CommunicationApp/public">
@@ -11,7 +11,7 @@
 </VirtualHost>
 
 <VirtualHost *:80>
-    ServerName comm-app.local
+    ServerName comm-app2.local
     DocumentRoot "C:/xampp/htdocs/CommunicationApp/public"
     SetEnv APPLICATION_ENV "development"
     <Directory "C:/xampp/htdocs/CommunicationApp/public">
@@ -23,7 +23,7 @@
 </VirtualHost>
 
 <VirtualHost *:80>
-    ServerName comm-app.local
+    ServerName comm-app3.local
     DocumentRoot "C:/xampp/htdocs/CommunicationApp/public"
     SetEnv APPLICATION_ENV "development"
     <Directory "C:/xampp/htdocs/CommunicationApp/public">
