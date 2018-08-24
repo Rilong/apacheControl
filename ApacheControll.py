@@ -24,10 +24,10 @@ while cmd != 'exit':
     if cmd == 'add':
         server_name = input('Server name: ')
         server_root = WWW + '/' + server_name + '/public_html'
-        if isConfirm():
+        if is_confirm():
             sites_blocks.append(create_host(server_name, server_root))
             if not os.path.exists(server_root):
-                if isConfirm('Are you want to create directory ' + server_root + '? (y/n) '):
+                if is_confirm('Are you want to create directory ' + server_root + '? (y/n) '):
                     os.makedirs(server_root)
                     print('Directory ' + server_root + ' is created')
             print('Virtual host is created')
@@ -45,7 +45,7 @@ while cmd != 'exit':
     elif cmd == 'remove':
         site_index = int(input('Type num site here: ')) - 1
 
-        if isConfirm():
+        if is_confirm():
             site_dir = WWW + '/' + parse_server_name(sites_blocks[site_index])
             del sites_blocks[site_index]
             if os.path.exists(site_dir):

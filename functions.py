@@ -28,7 +28,7 @@ def create_host(server_name, root, host='*'):
     return mackup
 
 
-def isConfirm(message='Are you sure want do it? (y/n) '):
+def is_confirm(message='Are you sure want do it? (y/n) '):
     yn = input(message)
 
     while True:
