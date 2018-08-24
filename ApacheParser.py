@@ -12,3 +12,7 @@ def parse_blocks(conf_str):
 
 def parse_server_name(vhost):
     return re.search(r'ServerName[ ]*(.+)', vhost).group(1)
+
+
+def parse_server_root(vhost):
+    return re.search(r'DocumentRoot[ ]*"(.+)"', vhost).group(1)
