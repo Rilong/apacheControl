@@ -1,4 +1,6 @@
-def read_apache_file(file):
+import re
+
+def read_file(file):
     a_file = open(file, 'r')
     a_content = a_file.read()
     a_file.close()
@@ -40,3 +42,14 @@ def isConfirm(message='Are you sure want do it? (y/n) '):
         return True
     else:
         return False
+
+
+def write_host(hosts_dir, hosts):
+    file_read = read_file(hosts_dir)
+    hoststr = ''
+    for host in hosts:
+        hoststr += host + '\n'
+    file_write = open(hosts_dir, 'w')
+    host_content = re.sub('#===\n(.+(\n|.)+)#===', '#===\n' + hoststr + '#===', file_read)
+    file_write.write(host_content)
+    file_write.close()

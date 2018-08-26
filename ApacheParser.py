@@ -16,3 +16,9 @@ def parse_server_name(vhost):
 
 def parse_server_root(vhost):
     return re.search(r'DocumentRoot[ ]*"(.+)"', vhost).group(1)
+
+
+def parse_hosts(hosts):
+    localhosts = re.search(r'#===\n(.+(\n|.)+)#===', hosts).group(1)
+    parsed_hosts = re.findall(r'([0-9.]+\s+.+)', localhosts)
+    return parsed_hosts

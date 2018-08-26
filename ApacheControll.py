@@ -7,6 +7,7 @@ from shutil import rmtree
 HOME = str(Path.home())
 WWW = HOME + '/www'
 VHOSTS = '/opt/lampp/etc/extra/httpd-vhosts.conf'
+HOSTS = '/etc/hosts'
 
 print('Welcome!')
 print('====Commands====')
@@ -17,7 +18,9 @@ print('exit - Exit from program')
 print('================')
 
 cmd = ''
-sites_blocks = parse_blocks(read_apache_file(VHOSTS))
+hosts_content = read_file(HOSTS)
+sys_hosts = parse_hosts(hosts_content)
+sites_blocks = parse_blocks(read_file(VHOSTS))
 while cmd != 'exit':
     cmd = input('Command: ')
 
@@ -34,11 +37,13 @@ while cmd != 'exit':
 
             file = open('apache.txt', 'w')
 
-            print('Write in file...')
-
+            print('Write in file httpd_vhosts...')
             write_apache_file(sites_blocks, VHOSTS)
-
-            print('Write in file is done')
+            sys_hosts.append('127.0.0.1\t' + server_name)
+            print('Write in file hosts...')
+            write_host(HOSTS, sys_hosts)
+            print('Write in file httpd_vhosts is done')
+            print('Write in file hosts is done')
             print('Done!')
         else:
             pass
