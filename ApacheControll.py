@@ -50,12 +50,22 @@ while cmd != 'exit':
     elif cmd == 'remove':
         site_index = int(input('Type num site here: ')) - 1
 
+        host_index = index_by_sitename(parse_server_name(sites_blocks[site_index]), sys_hosts)
+
+        print(sys_hosts)
+        print(host_index)
         if is_confirm():
             site_dir = WWW + '/' + parse_server_name(sites_blocks[site_index])
             del sites_blocks[site_index]
             if os.path.exists(site_dir):
                 rmtree(site_dir)
                 print('Site directory is deleted')
+            try:
+                del sys_hosts[host_index]
+                write_host(HOSTS, sys_hosts)
+                print('Host is removed')
+            except IndexError:
+                print('Host not found')
             write_apache_file(sites_blocks, VHOSTS)
             print('Site is removed')
             print('Write in file is done')

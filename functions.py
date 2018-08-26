@@ -1,5 +1,6 @@
 import re
 
+
 def read_file(file):
     a_file = open(file, 'r')
     a_content = a_file.read()
@@ -53,3 +54,15 @@ def write_host(hosts_dir, hosts):
     host_content = re.sub('#===\n(.+(\n|.)+)#===', '#===\n' + hoststr + '#===', file_read)
     file_write.write(host_content)
     file_write.close()
+
+
+def index_by_sitename(sitename, hosts):
+    index = 0
+    print(sitename)
+    for host in hosts:
+        print(host.find(sitename))
+        if host.find(sitename) != -1:
+            break
+        index += 1
+
+    return index
