@@ -60,9 +60,7 @@ def write_host(hosts_dir, hosts):
 
 def index_by_sitename(sitename, hosts):
     index = 0
-    print(sitename)
     for host in hosts:
-        print(host.find(sitename))
         if host.find(sitename) != -1:
             break
         index += 1
