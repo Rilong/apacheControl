@@ -1,4 +1,5 @@
 import re
+from ApacheParser import parse_server_name
 
 
 def read_file(file):
@@ -19,12 +20,13 @@ def write_apache_file(blocks, file):
 def create_host(server_name, root, host='*'):
     mackup = '''<VirtualHost ''' + host + ''':80>
     ServerName ''' + server_name + '''
+    DirectoryIndex index.php
     DocumentRoot "''' + root + '''"
+    
     <Directory "''' + root + '''">
-        DirectoryIndex index.php
+        Options All
         AllowOverride All
-        Order allow,deny
-        Allow from all
+        Require all granted
     </Directory>
 </VirtualHost>'''
 
@@ -66,3 +68,11 @@ def index_by_sitename(sitename, hosts):
         index += 1
 
     return index
+
+
+def check_vhost(sitename, vhosts):
+    for host in vhosts:
+        if parse_server_name(host).find(sitename) != -1:
+            return True
+
+    return False

@@ -27,33 +27,34 @@ while cmd != 'exit':
     if cmd == 'add':
         server_name = input('Server name: ')
         server_root = WWW + '/' + server_name + '/public_html'
-        if is_confirm():
-            sites_blocks.append(create_host(server_name, server_root))
-            if not os.path.exists(server_root):
-                if is_confirm('Are you want to create directory ' + server_root + '? (y/n) '):
-                    os.makedirs(server_root)
-                    print('Directory ' + server_root + ' is created')
-            print('Virtual host is created')
+        if not check_vhost(server_name, sites_blocks):
+            if is_confirm():
+                sites_blocks.append(create_host(server_name, server_root))
+                if not os.path.exists(server_root):
+                    if is_confirm('Are you want to create directory ' + server_root + '? (y/n) '):
+                        os.makedirs(server_root)
+                        print('Directory ' + server_root + ' is created')
+                print('Virtual host is created')
 
-            file = open('apache.txt', 'w')
+                file = open('apache.txt', 'w')
 
-            print('Write in file httpd_vhosts...')
-            write_apache_file(sites_blocks, VHOSTS)
-            sys_hosts.append('127.0.0.1\t' + server_name)
-            print('Write in file hosts...')
-            write_host(HOSTS, sys_hosts)
-            print('Write in file httpd_vhosts is done')
-            print('Write in file hosts is done')
-            print('Done!')
+                print('Write in file httpd_vhosts...')
+                write_apache_file(sites_blocks, VHOSTS)
+                sys_hosts.append('127.0.0.1\t' + server_name)
+                print('Write in file hosts...')
+                write_host(HOSTS, sys_hosts)
+                print('Write in file httpd_vhosts is done')
+                print('Write in file hosts is done')
+                print('Done!')
+            else:
+                pass
         else:
-            pass
+            print('Host exists')
     elif cmd == 'remove':
         site_index = int(input('Type num site here: ')) - 1
 
         host_index = index_by_sitename(parse_server_name(sites_blocks[site_index]), sys_hosts)
 
-        print(sys_hosts)
-        print(host_index)
         if is_confirm():
             site_dir = WWW + '/' + parse_server_name(sites_blocks[site_index])
             del sites_blocks[site_index]
